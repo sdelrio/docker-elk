@@ -1,0 +1,5 @@
+bootstrap.mlockall: true
+node:
+    name: ${HOSTNAME}
+http.cors.enabled: true
+#http.cors.allow-orgin: "/.*/"
