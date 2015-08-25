@@ -1,3 +1,6 @@
+cluster.name: docker-elasticsearch
+#path.data: /var/lib/elasticsearch
+
 bootstrap.mlockall: true
 node:
     name: ${HOSTNAME}

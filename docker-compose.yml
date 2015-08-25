@@ -1,24 +1,35 @@
 elasticsearch:
   build: elasticsearch/
-  ports:
-    - "9200:9200"
+#  ports:
+#    - "9200:9200"
   volumes:
     - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-    - ./elastissearch/data:/usr/share/elasticsearch/data
+    - ./elasticsearch/data:/usr/share/elasticsearch/data
+  restart: always
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
+    - ./logstash/patterns:/etc/logstash/patterns_extra
   ports:
     - "5000:5000"
   links:
     - elasticsearch
+  restart: always
 kibana:
   build: kibana/
   volumes:
     - ./kibana/config/kibana.yml:/opt/kibana/config/kibana.yml
-  ports:
-    - "5601:5601"
+#  ports:
+#    - "5601:5601"
   links:
     - elasticsearch
+  restart: always
+nginx:
+  build: nginx
+  ports: 
+      - "5443:443"
+  links:
+      - kibana
+  restart: always
