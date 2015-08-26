@@ -6,3 +6,4 @@ node:
     name: ${HOSTNAME}
 http.cors.enabled: true
 #http.cors.allow-orgin: "/.*/"
+network.host: ${HOSTNAME}
