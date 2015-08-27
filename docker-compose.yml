@@ -1,7 +1,7 @@
 elasticsearch:
   build: elasticsearch/
-  ports:
-    - "9200:9200"
+#  ports:
+#    - "9200:9200"
   volumes:
     - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     - ./elasticsearch/data:/usr/share/elasticsearch/data
